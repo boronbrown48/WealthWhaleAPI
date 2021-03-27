@@ -83,11 +83,12 @@ app.get('/sumexpenselist', function (req, res) {
 
 app.get('/sumincomelist/flex', function (req, res) {
   var sum = 0
+  var input = req.query;
   var mergeList = incomeList
   var userId = input.customer_id
   incomeList=[]
   for (i = 0; i < mergeList.length; i++) {
-    sum += parseInt(mergeList[i].contents[1].text.split(" ")[0])
+    sum += parseInt(mergeList[i] .contents[1].text.split(" ")[0])
     console.log("num=" + sum)
   }
   console.log("sum=" + sum)
@@ -192,6 +193,7 @@ app.get('/sumincomelist/flex', function (req, res) {
 
 app.get('/sumexpenselist/flex', function (req, res) {
   var sum = 0
+  var input = req.query;
   var mergeList = expenseList
   var userId = input.customer_id
   expenseList=[]
@@ -297,10 +299,10 @@ app.get('/sumexpenselist/flex', function (req, res) {
   });
 });
 
-app.listen(process.env.PORT || 80, function () {
-  console.log('App listening on port 5000!');
-})
-
-// app.listen(3000, function () {
+// app.listen(process.env.PORT || 80, function () {
 //   console.log('App listening on port 5000!');
 // })
+
+app.listen(3000, function () {
+  console.log('App listening on port 5000!');
+})
