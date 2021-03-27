@@ -5,6 +5,9 @@ app.use(bodyParser.json());
 
 var list = []
 
+app.get('/', function(res,req){
+    res.send('Success')
+})
 
 app.get('/sumlist', function(req, res) {
   // item = {
