@@ -186,7 +186,8 @@ app.get('/sumincomelist/flex', function (req, res) {
 
 
   res.json({
-    output: template
+    output: template,
+    user: userId
   });
 });
 
