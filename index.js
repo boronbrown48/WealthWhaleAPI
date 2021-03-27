@@ -299,10 +299,10 @@ app.get('/sumexpenselist/flex', function (req, res) {
   });
 });
 
-// app.listen(process.env.PORT || 80, function () {
-//   console.log('App listening on port 5000!');
-// })
-
-app.listen(3000, function () {
+app.listen(process.env.PORT || 80, function () {
   console.log('App listening on port 5000!');
 })
+
+// app.listen(3000, function () {
+//   console.log('App listening on port 5000!');
+// })
