@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+const Client = require('@line/bot-sdk').Client;
 const app = express();
 app.use(bodyParser.json());
 
@@ -83,6 +84,7 @@ app.get('/sumexpenselist', function (req, res) {
 app.get('/sumincomelist/flex', function (req, res) {
   var sum = 0
   var mergeList = incomeList
+  var AccessToken = input.AccessToken
   incomeList=[]
   for (i = 0; i < mergeList.length; i++) {
     sum += parseInt(mergeList[i].contents[1].text.split(" ")[0])
@@ -173,6 +175,13 @@ app.get('/sumincomelist/flex', function (req, res) {
       "type": "box"
     }
   }
+  client = new Client({
+    channelAccessToken: 'LLAa0wAc3eOTUXdcuUr2osdd/IPCI0hHecb2aqXQdhtcDubkCL1AF+fRvia1qrycev0vycz7k58f9xspmhpnp7hh5wtz7qf6k99r5qkZ1CXxJUqupzJdu/OEwGEPhgIehN7F2+SL9sVDhn/jtpwkzaE9SfjcURgdB04t89/1O/w1cDnyilFU=',
+    channelSecret: '0aef1eca3ac9cd43355cc77da151a3d4'
+  });
+  
+  client.pushMessage(userId,template);
+
 
 
   res.json({
