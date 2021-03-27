@@ -1,5 +1,6 @@
 var express = require('express');
 var bodyParser = require('body-parser');
+var request = require('request')
 const Client = require('@line/bot-sdk').Client;
 const app = express();
 app.use(bodyParser.json());
@@ -86,7 +87,6 @@ app.get('/sumincomelist/flex', function (req, res) {
   var input = req.query;
   var mergeList = incomeList
   var userId = input.customer_id
-  const event = req.body.events[0];
   
 
   incomeList=[]
@@ -183,8 +183,8 @@ app.get('/sumincomelist/flex', function (req, res) {
     channelAccessToken: 'LLAa0wAc3eOTUXdcuUr2osdd/IPCI0hHecb2aqXQdhtcDubkCL1AF+fRvia1qrycev0vycz7k58f9xspmhpnp7hh5wtz7qf6k99r5qkZ1CXxJUqupzJdu/OEwGEPhgIehN7F2+SL9sVDhn/jtpwkzaE9SfjcURgdB04t89/1O/w1cDnyilFU=',
     channelSecret: '0aef1eca3ac9cd43355cc77da151a3d4'
   });
-  client.replyMessage(event.replyToken, template)
-  client.pushMessage(userId,template);
+  sendText("U5f30bd1dd71e6871816acbe7db653611", template)
+  //client.pushMessage("U5f30bd1dd71e6871816acbe7db653611",template);
 
 
 
@@ -302,6 +302,27 @@ app.get('/sumexpenselist/flex', function (req, res) {
     output: template
   });
 });
+
+function sendText (sender, message) {
+  let data = {
+    to: sender,
+    messages: message
+  }
+  request({
+    headers: {
+      'Content-Type': 'application/json',
+      'Authorization': 'LLAa0wAc3eOTUXdcuUr2osdd/IPCI0hHecb2aqXQdhtcDubkCL1AF+fRvia1qrycev0vycz7k58f9xspmhpnp7hh5wtz7qf6k99r5qkZ1CXxJUqupzJdu/OEwGEPhgIehN7F2+SL9sVDhn/jtpwkzaE9SfjcURgdB04t89/1O/w1cDnyilFU='
+    },
+    url: 'https://api.line.me/v2/bot/message/push',
+    method: 'POST',
+    body: data,
+    json: true
+  }, function (err, res, body) {
+    if (err) console.log('error')
+    if (res) console.log('success')
+    if (body) console.log(body)
+  })
+}
 
 app.listen(process.env.PORT || 80, function () {
   console.log('App listening on port 5000!');
