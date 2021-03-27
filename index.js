@@ -29,7 +29,7 @@ app.get('/sumlist', function(req, res) {
             "align": "end",
             "color": "#000000",
             "size": "md",
-            "text": price+" บาท",
+            "text": price +" บาท",
             "type": "text",
             "weight": "bold"
         }
@@ -47,8 +47,10 @@ app.get('/sumlist', function(req, res) {
 
 app.get('/sumlist/flex', function(req, res) {
   var sum=0
-  for(i = 0; i < list.length; i++){
-    sum += parseInt(list[i].contents[1].text.split(" ")[0])
+  var mergeList = list
+  list=[]
+  for(i = 0; i < mergeList.length; i++){
+    sum += parseInt(mergeList[i].contents[1].text.split(" ")[0])
     console.log("num="+sum)
   }
   console.log("sum="+sum)
@@ -77,14 +79,17 @@ app.get('/sumlist/flex', function(req, res) {
     "layout": "baseline",
     "type": "box"
 }
-  list.push(separator)
-  list.push(sumItem)
+mergeList.push(separator)
+mergeList.push(sumItem)
   res.json({
-    output: list
+    output: mergeList
   });
 });
   
   app.listen(process.env.PORT || 80 , function () {
     console.log('App listening on port 5000!');
-  })
+  }) 
   
+  // app.listen(3000, function () {
+  //   console.log('App listening on port 5000!');
+  // })
