@@ -5,9 +5,6 @@ app.use(bodyParser.json());
 
 var list = []
 
-app.get('/', function(res,req){
-    res.send('Success')
-})
 
 app.get('/sumlist', function(req, res) {
   // item = {
@@ -87,7 +84,7 @@ app.get('/sumlist/flex', function(req, res) {
   });
 });
   
-  app.listen(5000, function () {
+  app.listen(80, function () {
     console.log('App listening on port 5000!');
   })
   
