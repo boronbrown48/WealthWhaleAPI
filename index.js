@@ -84,7 +84,7 @@ app.get('/sumlist/flex', function(req, res) {
   });
 });
   
-  app.listen(5000, function () {
+  app.listen(process.env.PORT || 80 , function () {
     console.log('App listening on port 5000!');
   })
   
