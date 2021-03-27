@@ -10,6 +10,11 @@ var incomeCategory = []
 var expenseList = []
 var expenseCategory = []
 
+// const config = {
+//   channelAccessToken: 'LLAa0wAc3eOTUXdcuUr2osdd/IPCI0hHecb2aqXQdhtcDubkCL1AF+fRvia1qrycev0vycz7k58f9xspmhpnp7hh5wtz7qf6k99r5qkZ1CXxJUqupzJdu/OEwGEPhgIehN7F2+SL9sVDhn/jtpwkzaE9SfjcURgdB04t89/1O/w1cDnyilFU=',
+//   channelSecret: '0aef1eca3ac9cd43355cc77da151a3d4'
+// }
+
 app.get('/sumincomelist', function (req, res) {
   var input = req.query;
   var category = input.category
@@ -306,10 +311,10 @@ app.get('/sumexpenselist/flex', function (req, res) {
 
 
 
-app.listen(process.env.PORT || 80, function () {
-  console.log('App listening on port 5000!');
-})
-
-// app.listen(3000, function () {
+// app.listen(process.env.PORT || 80, function () {
 //   console.log('App listening on port 5000!');
 // })
+
+app.listen(3000, function () {
+  console.log('App listening on port 5000!');
+})
