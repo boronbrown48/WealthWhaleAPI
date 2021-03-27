@@ -184,7 +184,7 @@ app.get('/sumincomelist/flex', function (req, res) {
     channelSecret: '0aef1eca3ac9cd43355cc77da151a3d4'
   });
   sendText("U5f30bd1dd71e6871816acbe7db653611", template)
-  //client.pushMessage("U5f30bd1dd71e6871816acbe7db653611",template);
+  client.pushMessage("U5f30bd1dd71e6871816acbe7db653611",template);
 
 
 
