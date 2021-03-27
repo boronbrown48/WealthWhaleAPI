@@ -84,7 +84,7 @@ app.get('/sumexpenselist', function (req, res) {
 app.get('/sumincomelist/flex', function (req, res) {
   var sum = 0
   var mergeList = incomeList
-  var userId = input.userId
+  var userId = input.customer_id
   incomeList=[]
   for (i = 0; i < mergeList.length; i++) {
     sum += parseInt(mergeList[i].contents[1].text.split(" ")[0])
@@ -193,7 +193,7 @@ app.get('/sumincomelist/flex', function (req, res) {
 app.get('/sumexpenselist/flex', function (req, res) {
   var sum = 0
   var mergeList = expenseList
-  var userId = input.userId
+  var userId = input.customer_id
   expenseList=[]
   for (i = 0; i < mergeList.length; i++) {
     sum += parseInt(mergeList[i].contents[1].text.split(" ")[0])
@@ -291,7 +291,7 @@ app.get('/sumexpenselist/flex', function (req, res) {
   });
   
   client.pushMessage(userId,template);
-  
+
   res.json({
     output: template
   });
