@@ -86,6 +86,9 @@ app.get('/sumincomelist/flex', function (req, res) {
   var input = req.query;
   var mergeList = incomeList
   var userId = input.customer_id
+  const event = req.body.events[0];
+  
+
   incomeList=[]
   for (i = 0; i < mergeList.length; i++) {
     sum += parseInt(mergeList[i] .contents[1].text.split(" ")[0])
@@ -180,7 +183,7 @@ app.get('/sumincomelist/flex', function (req, res) {
     channelAccessToken: 'LLAa0wAc3eOTUXdcuUr2osdd/IPCI0hHecb2aqXQdhtcDubkCL1AF+fRvia1qrycev0vycz7k58f9xspmhpnp7hh5wtz7qf6k99r5qkZ1CXxJUqupzJdu/OEwGEPhgIehN7F2+SL9sVDhn/jtpwkzaE9SfjcURgdB04t89/1O/w1cDnyilFU=',
     channelSecret: '0aef1eca3ac9cd43355cc77da151a3d4'
   });
-  
+  client.replyMessage(event.replyToken, template)
   client.pushMessage(userId,template);
 
 
